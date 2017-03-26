@@ -16,7 +16,11 @@ RUN apt-get install -y mysql-server && \
     phpenmod mbstring
 
 RUN echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
-    
+
+RUN /etc/init.d/apache2 restart
+RUN /etc/init.d/mysql restart
+
+
 RUN service apache2 restart 
 RUN service mysql restart
 
