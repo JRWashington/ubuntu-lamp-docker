@@ -5,9 +5,9 @@ ENV USER root
 
 RUN apt-get update && \
     apt-get install -y apache2 && \
-    apt-get install -y php libapache2-mod-php php-mcrypt php-mysql && \
+    apt-get install -y php libapache2-mod-php php-mcrypt php-mysql php-gettext && \
     apt-get install -y phpmyadmin php-mbstring php-gettext && \
-    apt install php-gettext
+    
     
 RUN apt-get install -y mysql-server && \
     service mysql restart && \
@@ -16,7 +16,7 @@ RUN apt-get install -y mysql-server && \
     phpenmod mbstring
     
     
-RUN service apache2 restart
+RUN /etc/init.d/apache2 restart
 
 
     
