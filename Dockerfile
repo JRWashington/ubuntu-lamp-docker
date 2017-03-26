@@ -7,9 +7,8 @@ RUN apt-get update && \
     apt-get install -y apache2 && \
     apt-get install -y php libapache2-mod-php php-mcrypt php-mysql
     
-CMD debconf-set-selections <<< 'mysql-server mysql-server/root_password password JRWPassword'
-CMD debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password JRWPassword'
-RUN apt-get -y install mysql-server
+RUN apt-get -q -y install mysql-server && \
+    mysqladmin -u root password JRWPassword
     
 RUN /etc/init.d/apache2 restart
     
