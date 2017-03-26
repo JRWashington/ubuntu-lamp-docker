@@ -6,7 +6,7 @@ ENV USER root
 RUN apt-get update && \
     apt-get install -y apache2 && \
     apt-get install -y php libapache2-mod-php php-mcrypt php-mysql && \
-    apt-get install -y phpmyadmin php-mbstring php-gettext && \
+    apt-get install -y phpmyadmin php-mbstring php-gettext
     
     
 RUN apt-get install -y mysql-server && \
