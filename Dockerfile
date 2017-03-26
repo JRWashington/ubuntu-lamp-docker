@@ -15,7 +15,7 @@ RUN apt-get install -y mysql-server && \
     phpenmod mbstring
     
     
-RUN /etc/init.d/apache2 restart
+RUN service apache2 restart
 
 
     
