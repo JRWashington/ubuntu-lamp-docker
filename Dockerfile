@@ -22,8 +22,8 @@ RUN echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
 RUN /etc/init.d/apache2 restart
 RUN /etc/init.d/mysql restart
 
-RUN echo "service apache2 restart" >> /etc/rc.local
-RUN echo "service mysql restart" >> /etc/rc.local
+RUN sed -i '/By default this script/a service apache2 restart' /etc/rc.local
+RUN sed -i '/By default this script/a service mysql restart' /etc/rc.local
 
 
 EXPOSE 80
