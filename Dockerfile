@@ -3,8 +3,7 @@ FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER root
 
-# Add needed repositories
-RUN add-apt-repository -y ppa:certbot/certbot
+
 
 # Installs Apache, PHP and PHPMyAdmin
 RUN apt-get update && \
@@ -12,7 +11,10 @@ RUN apt-get update && \
     apt-get install -y apache2 && \
     apt-get install -y php libapache2-mod-php php-mcrypt php-mysql && \
     apt-get install -y phpmyadmin php-mbstring php-gettext
-    
+   
+# Add needed repositories
+RUN add-apt-repository -y ppa:certbot/certbot && \
+    apt-get update
     
 # Installs MySQL and configures it 
 RUN apt-get install -y mysql-server && \
