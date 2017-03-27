@@ -26,9 +26,6 @@ RUN /etc/init.d/mysql restart
 # RUN sed -i '/By default this script/a service mysql restart' /etc/rc.local
 
 
-ENTRYPOINT "service apache2 restart" && /bin/bash
-ENTRYPOINT "service mysql restart" && /bin/bash
-
 EXPOSE 80
 
 EXPOSE 443
