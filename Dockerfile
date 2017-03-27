@@ -28,6 +28,5 @@ EXPOSE 443
 
 EXPOSE 3306
 
-CMD ["/bin/bash", "/usr/local/bin/startup"]
 
 
