@@ -28,7 +28,7 @@ EXPOSE 443
 
 EXPOSE 3306
 
-ENTRYPOINT service apache2 restart 
-ENTRYPOINT service mysql restart
+ENTRYPOINT service apache2 restart && bash
+ENTRYPOINT service mysql restart && bash
 
 
