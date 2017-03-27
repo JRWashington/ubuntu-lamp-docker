@@ -3,11 +3,16 @@ FROM ubuntu:16.04
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER root
 
+# Add needed repositories
+RUN add-apt-repository -y ppa:certbot/certbot
+
 # Installs Apache, PHP and PHPMyAdmin
 RUN apt-get update && \
+    apt-get install software-properties-common && \
     apt-get install -y apache2 && \
     apt-get install -y php libapache2-mod-php php-mcrypt php-mysql && \
     apt-get install -y phpmyadmin php-mbstring php-gettext
+    
     
 # Installs MySQL and configures it 
 RUN apt-get install -y mysql-server && \
@@ -15,6 +20,10 @@ RUN apt-get install -y mysql-server && \
     mysqladmin -u root password JRWPassword && \
     phpenmod mcrypt && \
     phpenmod mbstring
+  
+# Install Certbot
+RUN apt-get install -y python-certbot-apache 
+
 
 # Adds PHPMyAdmin to the Apache configuration
 RUN echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
