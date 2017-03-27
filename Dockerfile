@@ -19,8 +19,8 @@ RUN apt-get install -y mysql-server && \
 # Adds PHPMyAdmin to the Apache configuration
 RUN echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
 
-RUN /etc/init.d/apache2 restart
-RUN /etc/init.d/mysql restart
+RUN systemctl enable apache2
+RUN systemctl enable mysql
 
 # RUN sed -i '/By default this script/a service apache2 restart' /etc/rc.local
 # RUN sed -i '/By default this script/a service mysql restart' /etc/rc.local
