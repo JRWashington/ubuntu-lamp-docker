@@ -20,12 +20,12 @@ RUN echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
 RUN /etc/init.d/apache2 restart
 RUN /etc/init.d/mysql restart
 
-CMD service apache2 start && service mysql start
-
 EXPOSE 80
 
 EXPOSE 443
 
 EXPOSE 3306
+
+ENTRYPOINT service apache2 restart && service mysql restart
 
 
